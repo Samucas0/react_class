@@ -1,4 +1,61 @@
+/* Variáveis de tema */
+:root{
+  --bg: #0b1b2b;
+  --accent: #ff6b6b;
+  --text: #f4f7fb;
+  --muted: #9fb0c6;
+  --gap: 16px;
+}
+
+.header {
+  background: #0b0f13;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* Logo */
+.logo { display:flex; align-items:center; text-decoration:none; color:inherit; }
+.logoMark {
+  width:44px; height:44px; border-radius:6px; background:#ce0000; display:inline-flex; align-items:center; justify-content:center; font-weight:800; margin-right:10px;
+}
+.logoText { font-weight:800; font-size:1rem; }
+
+/* Navegação */
 nav {
     display: flex;
     gap: 15px;
+}
+.nav{}
+.navList {
+  display:flex; gap:14px; margin:0; padding:0; list-style:none; align-items:center;
+}
+.navItem{}
+.link {
+  color:#dfe7ee; text-decoration:none; font-weight:600; padding:8px; border-radius:6px;
+}
+.link:hover { color:#fff; background:rgba(255,255,255,0.03); }
+
+/* mobile */
+@media (max-width: 640px){
+  .container{
+    padding: 10px 12px;
+  }
+  .logoText{
+    display: none;
+  }
+  .navList{
+    gap: 8px;
+  }
 }

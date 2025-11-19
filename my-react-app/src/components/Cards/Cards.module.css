@@ -1,0 +1,54 @@
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 8px;
+  overflow: hidden;
+  color: var(--text);
+  box-shadow: 0 6px 18px rgba(2,8,23,0.6);
+  display:flex;
+  flex-direction:column;
+  min-height: 220px;
+  /* when used inside carousel, occupy full card width */
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ensure proper sizing inside horizontal carousel */
+.player {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background:#000;
+}
+.player iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+.info {
+  padding: 12px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+.card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
