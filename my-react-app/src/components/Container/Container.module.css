@@ -12,6 +12,8 @@
 .wrapper {
   position: relative;
 }
+
+/* carousel: mantém rolagem, mas esconde a barra visual */
 .carousel {
   display: flex;
   gap: 16px;
@@ -19,11 +21,23 @@
   scroll-behavior: smooth;
   padding: 8px 6px;
   scroll-snap-type: x mandatory;
+
+  /* Esconde scrollbar em diversos navegadores */
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
 }
+.carousel::-webkit-scrollbar {
+  height: 0; /* Chrome/Safari/Opera */
+  display: none;
+}
+
+/* cada item do carrossel */
 .carousel > * {
   scroll-snap-align: start;
-  flex: 0 0 320px; /* controla quantos cards aparecem por "página" */
+  flex: 0 0 320px; /* ajuste para controlar quantos aparecem */
 }
+
+/* setas */
 .navBtn {
   position: absolute;
   top: 50%;
@@ -46,7 +60,8 @@
 .left { left: -12px; }
 .right { right: -12px; }
 .navBtn:disabled { opacity: 0.35; cursor: default; }
-/* small screens */
+
+/* mobile tweaks */
 @media (max-width: 760px) {
   .carousel > * { flex: 0 0 82%; }
   .left { left: 4px; }

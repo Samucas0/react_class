@@ -3,14 +3,18 @@ import styles from './Banner.module.css';
 import videosData from '../../data/videos';
 
 export default function Banner() {
-  const videos = videosData.featured || [];
+  // filtra apenas vídeos com id plausível (evita ids inválidos que quebram o embed)
+  const videos = (videosData.featured || []).filter(
+    v => v && typeof v.id === 'string' && /^[A-Za-z0-9_-]{8,}$/.test(v.id)
+  );
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
     if (!videos.length) return;
+    // troca mais devagar: 10s
     const t = setInterval(() => {
-      setIdx((i) => (i + 1) % videos.length);
-    }, 6000); // troca a cada 6s
+      setIdx(i => (i + 1) % videos.length);
+    }, 10000);
     return () => clearInterval(t);
   }, [videos.length]);
 
@@ -22,7 +26,7 @@ export default function Banner() {
         {current.id ? (
           <iframe
             className={styles.iframe}
-            title={current.title}
+            title={current.title || 'Samu Max'}
             src={`https://www.youtube.com/embed/${current.id}?rel=0&autoplay=1&mute=1&controls=0&modestbranding=1&playsinline=1`}
             frameBorder="0"
             allow="autoplay; encrypted-media; picture-in-picture"
@@ -31,6 +35,7 @@ export default function Banner() {
         ) : (
           <div className={styles.placeholder} />
         )}
+
         <div className={styles.overlay}>
           <div className={styles.info}>
             <h2 className={styles.title}>{current.title || 'Samu Max'}</h2>

@@ -10,18 +10,23 @@
   --gap: 16px;
 }
 
-html,body,#root {
+/* Layout helper: faz a página ocupar toda a altura e mantem o footer no fim */
+html, body, #root {
   height: 100%;
 }
-
-body {
-  margin: 0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg, var(--bg-900) 0%, var(--bg-800) 100%);
-  color: var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+main.home {
+  flex: 1 1 auto;
+  /* espaçamento interno para não colar no header/footer */
+  padding-bottom: 20px;
+}
+
+/* Se quiser que o footer fique sempre visível "sobre" conteúdo, use position fixed (opcional)
+footer { position: fixed; left:0; right:0; bottom:0; z-index:50; } */
 
 /* Main app wrapper */
 .app {
